@@ -24,8 +24,8 @@ default: &default
 development:
   <<: *default
   database: kata_07_reloj_checador_k7_f22_t3_development
-  username: 
-  password:
+  username: canox
+  password: 123456
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
