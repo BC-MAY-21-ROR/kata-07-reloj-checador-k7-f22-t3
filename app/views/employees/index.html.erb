@@ -1,0 +1,25 @@
+<p style="color: green"><%= notice %></p>
+<h1>Employees</h1>
+<div id="employees">
+  <%= link_to "New employee", new_employee_path, class: "btn btn-success" %>
+  <table class="table table-striped mt-5 table-dark">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Position</th>
+      <th>Employee#</th>
+      <th>Private Number</th>
+      <th></th>
+    </tr>
+    <% @employees.each do |employee| %>
+      <tr>
+        <td><%= employee.name %></td>
+        <td><%= employee.email %></td>
+        <td><%= employee.position %></td>
+        <td><%= employee.employee_number %></td>
+        <td><%= employee.private_number %></td>
+        <td><%= link_to "Show this employee", employee, class: 'btn btn-primary' %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
