@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @company_branch %>
+
+<div>
+  <%= link_to "Edit this company_branch", edit_company_branch_path(@company_branch) %> |
+  <%= link_to "Back to company_branches", company_branches_path %>
+
+  <%= button_to "Destroy this company_branch", @company_branch, method: :delete %>
+</div>
