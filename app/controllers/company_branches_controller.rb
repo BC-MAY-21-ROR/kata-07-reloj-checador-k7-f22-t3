@@ -1,5 +1,5 @@
 class CompanyBranchesController < ApplicationController
-  before_action :set_company_branch, only: %i[ show edit update destroy ]
+  before_action :set_company_branch, only: %i[show edit update destroy]
 
   # GET /company_branches or /company_branches.json
   def index
@@ -25,7 +25,7 @@ class CompanyBranchesController < ApplicationController
 
     respond_to do |format|
       if @company_branch.save
-        format.html { redirect_to company_branch_url(@company_branch), notice: "CompanyBranch was successfully created." }
+        format.html { redirect_to company_branch_url(@company_branch), notice: 'CompanyBranch was successfully created.' }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -36,7 +36,7 @@ class CompanyBranchesController < ApplicationController
   def update
     respond_to do |format|
       if @company_branch.update(company_branch_params)
-        format.html { redirect_to company_branch_url(@company_branch), notice: "company_branch was successfully updated." }
+        format.html { redirect_to company_branch_url(@company_branch), notice: 'company_branch was successfully updated.' }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -48,7 +48,7 @@ class CompanyBranchesController < ApplicationController
     @company_branch.destroy
 
     respond_to do |format|
-      format.html { redirect_to company_branches_url, notice: "company_branch was successfully destroyed." }
+      format.html { redirect_to company_branches_url, notice: 'company_branch was successfully destroyed.' }
     end
   end
 

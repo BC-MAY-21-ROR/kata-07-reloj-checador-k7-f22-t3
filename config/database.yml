@@ -24,8 +24,8 @@ default: &default
 development:
   <<: *default
   database: kata_07_reloj_checador_k7_f22_t3_development
-  username: alan
-  password: 123451
+  username:  <%= ENV['DB_USER'] %>
+  password:  <%= ENV['DB_PASS'] %>
   host: '127.0.0.1'
 
   # The specified database role being used to connect to postgres.
