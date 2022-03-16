@@ -273,8 +273,8 @@ DEPENDENCIES
   bootstrap_form (~> 5.0)
   capybara
   debug
-  dotenv-rails
   devise (~> 4.2)
+  dotenv-rails
   importmap-rails
   jbuilder
   pg
