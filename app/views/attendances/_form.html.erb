@@ -1,0 +1,18 @@
+<%= bootstrap_form_with(model: attendance) do |form| %>
+  <% if attendance.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(attendance.errors.count, "error") %> prohibited this attendance from being saved:</h2>
+      <ul>
+        <% attendance.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div>
+    <%= form.text_field :employee_private_number %>
+  </div>
+  <div>
+    <%= form.submit "Check", class: "btn btn-primary" %>
+  </div>
+<% end %>
