@@ -2,7 +2,6 @@
   <% if employee.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(employee.errors.count, "error") %> prohibited this employee from being saved:</h2>
-
       <ul>
         <% employee.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -10,13 +9,12 @@
       </ul>
     </div>
   <% end %>
-
-    <%= form.text_field :name %>
-    <%= form.text_field :email %>
-    <%= form.text_field :position %>
-    <%= form.number_field :employee_number %>
-    <%= form.text_field :private_number %>
-
+  <%= form.select(:company_branch_id, CompanyBranch.all.collect {|p| [ p.name, p.id ] }) %>
+  <%= form.text_field :name %>
+  <%= form.text_field :email %>
+  <%= form.text_field :position %>
+  <%= form.number_field :employee_number %>
+  <%= form.text_field :private_number %>
   <div>
     <%= form.submit %>
   </div>
