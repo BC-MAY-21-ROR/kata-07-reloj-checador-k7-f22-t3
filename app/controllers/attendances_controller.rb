@@ -25,7 +25,6 @@ class AttendancesController < ApplicationController
       employee = Employee.find_by(private_number: attendance_params[:employee_private_number])
       if employee == nil
         puts "El empleado no existe"
-        # flash.notice = "pinga"
         return
         # return format.html { redirect_to attendance_url(registro), notice: "No existes xd" }
       end
