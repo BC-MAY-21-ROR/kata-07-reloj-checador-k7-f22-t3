@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :attendances
   resources :company_branches
   resources :employees
   devise_for :users
