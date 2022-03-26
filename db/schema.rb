@@ -10,9 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_11_001340) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_23_235621) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attendances", force: :cascade do |t|
+    t.datetime "check_in"
+    t.datetime "check_out"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "employee_id", null: false
+    t.index ["employee_id"], name: "index_attendances_on_employee_id"
+  end
 
   create_table "company_branches", force: :cascade do |t|
     t.string "name"
@@ -27,8 +36,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_11_001340) do
     t.string "position"
     t.integer "employee_number"
     t.string "private_number"
+    t.bigint "company_branch_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["company_branch_id"], name: "index_employees_on_company_branch_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -43,4 +54,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_11_001340) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "attendances", "employees"
+  add_foreign_key "employees", "company_branches"
 end

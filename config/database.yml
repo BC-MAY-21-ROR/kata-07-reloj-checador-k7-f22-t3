@@ -61,8 +61,8 @@ development:
 test:
   <<: *default
   database: kata_07_reloj_checador_k7_f22_t3_test
-  username: alan
-  password: 123451
+  username:  <%= ENV['DB_USER'] %>
+  password:  <%= ENV['DB_PASS'] %>
   host: '127.0.0.1'
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
