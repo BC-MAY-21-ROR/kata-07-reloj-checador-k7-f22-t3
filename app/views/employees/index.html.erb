@@ -8,6 +8,7 @@
       <th>Position</th>
       <th>Employee#</th>
       <th>Private Number</th>
+      <th>Company Branch</th>
       <th></th>
     </tr>
     <% @employees.each do |employee| %>
@@ -17,6 +18,7 @@
         <td><%= employee.position %></td>
         <td><%= employee.employee_number %></td>
         <td><%= employee.private_number %></td>
+        <td><%= employee.company_branch.name %></td>
         <td><%= link_to "Show this employee", employee, class: 'btn btn-primary' %></td>
       </tr>
     <% end %>
