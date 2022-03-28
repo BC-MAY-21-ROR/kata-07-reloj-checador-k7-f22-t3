@@ -1,12 +1,17 @@
-<h1>company_branches</h1>
-
+<h1>Company Branches</h1>
 <div id="company_branches">
-  <% @company_branches.each do |company_branch| %>
-    <%= render company_branch %>
-    <p>
-      <%= link_to "Show this company_branch", company_branch %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New company_branch", new_company_branch_path %>
+  <%= link_to "New company branch", new_company_branch_path, class: "btn btn-success" %>
+  <table class="table table-striped mt-5 table-dark">
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th></th>
+    </tr>
+    <% @company_branches.each do |company_branch| %>
+      <tr>
+        <td><%= company_branch.name %></td>
+        <td><%= company_branch.address %></td>
+        <td><%= link_to "Show", company_branch, class: 'btn btn-primary' %></td>
+      </tr>
+    <% end %>
+  </table>

@@ -7,5 +7,9 @@
   </div>
 </div>
 <script>
-  setInterval(() => clock.innerText = new Date().toLocaleTimeString(),1000)
+  function setClock() {
+    clock.innerText = new Date().toLocaleTimeString()
+  }
+  setClock()
+  setInterval(setClock, 1000)
 </script>

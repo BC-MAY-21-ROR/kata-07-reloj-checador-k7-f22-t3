@@ -18,6 +18,9 @@
         <li class="nav-item">
           <%= link_to 'Attendances', attendances_path, class: "nav-link #{controller_name == "attendances" ? 'active' : '' }" %>
         </li>
+        <li class="nav-item">
+          <%= link_to 'Reports', reports_show_path, class: "nav-link #{controller_name == "reports" ? 'active' : '' }" %>
+        </li>
       </ul>
       <%= button_to 'Log Out', destroy_user_session_path, method: :delete, 'data-turbo': false, class: 'btn btn-danger' %>
       <!--<button class="btn btn-primary">Login</button>-->
