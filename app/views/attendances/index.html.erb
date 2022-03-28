@@ -3,10 +3,9 @@
   <%= link_to "New attendance", new_attendance_path, class: "btn btn-success" %>
   <table class="table table-striped mt-5 table-dark">
     <tr>
-      <th>Employee private number</th>
+      <th>Employee</th>
       <th>Check In</th>
       <th>Check Out</th>
-      <th></th>
     </tr>
     <% @attendances.each do |attendance| %>
       <tr>
@@ -15,7 +14,6 @@
           <%= attendance.check_in.strftime('%A, %d %B %Y - %I:%M %p') if attendance.check_in %>
         </td>
         <td><%= attendance.check_out.strftime('%A, %d %B %Y - %I:%M %p') if attendance.check_out %></td>
-        <td><%= link_to "Show this attendance", attendance, class: 'btn btn-primary' %></td>
       </tr>
     <% end %>
   </table>

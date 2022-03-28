@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'reports/show'
   resources :attendances
   resources :company_branches
   resources :employees
