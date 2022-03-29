@@ -3,11 +3,13 @@
   <tr>
     <th>Employee name</th>
     <th>Today attendance</th>
+    <th>Average time in <%= Date.today.strftime("%B") %></th>
   </tr>
   <% @changed_employees.each do |employee| %>
     <tr>
       <td><%= employee[:name] %></td>
       <td><%= employee[:today_assist] ? "✔" : "✖" %></td>
+      <td><%= employee[:average] %></td>
     </tr>
   <% end %>
 </table>

@@ -25,10 +25,13 @@ class AttendancesController < ApplicationController
     return redirect_to new_attendance_url, alert: 'Verify your private number' if @employee.nil?
 
     @attendance = Attendance.where(employee_id: @employee.id).where('check_in BETWEEN ? AND ?', DateTime.now.beginning_of_day, DateTime.now.end_of_day).last
+   
     if @attendance
       return redirect_to new_attendance_url, alert: 'You have already check out today' if @attendance.check_out
+     
       @attendance.update_attribute(:check_out, DateTime.now)
     else
+    
       @attendance = Attendance.new({employee_id: @employee.id, check_in: DateTime.now})
       @attendance.save
     end
