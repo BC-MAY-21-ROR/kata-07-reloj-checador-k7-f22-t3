@@ -13,12 +13,14 @@ CompanyBranch.destroy_all
 CompanyBranch.create(name: 'New york city', address: Faker::Address.full_address)
 50.times{
     Employee.create(
-    name: Faker::Name.name,
-    position: Faker::Job.position,
-    email: Faker::Internet.email,
-    employee_number: Faker::Number.number(digits: 5),
-    private_number: Faker::Number.number(digits: 6),
-    company_branch_id: CompanyBranch.last.id)
+        name: Faker::Name.name,
+        position: Faker::Job.position,
+        email: Faker::Internet.email,
+        employee_number: Faker::Number.number(digits: 5),
+        private_number: Faker::Number.number(digits: 6),
+        company_branch_id: CompanyBranch.last.id,
+        is_active: true
+    )
 }
 
 50.times{ |d|
