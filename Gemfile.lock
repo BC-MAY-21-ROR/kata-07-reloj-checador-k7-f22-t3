@@ -111,6 +111,8 @@ GEM
       railties (>= 3.2)
     erubi (1.10.0)
     execjs (2.8.1)
+    faker (2.20.0)
+      i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
     globalid (1.0.0)
       activesupport (>= 5.0)
@@ -275,6 +277,7 @@ DEPENDENCIES
   debug
   devise (~> 4.2)
   dotenv-rails
+  faker
   importmap-rails
   jbuilder
   pg
