@@ -26,4 +26,9 @@ class Employee < ApplicationRecord
   def today_attendance?
     attendances.where(check_in: Date.today.all_day).first.nil? ? false : true
   end
+  
+  validates :name, :email, :position, :employee_number, :private_number, :company_branch_id, presence: true
+  validates :email, uniqueness: true
+  validates :private_number, uniqueness: true
+  validates :employee_number, uniqueness: true
 end
