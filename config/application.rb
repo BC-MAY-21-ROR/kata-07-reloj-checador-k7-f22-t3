@@ -23,12 +23,12 @@ module Kata07RelojChecadorK7F22T3
     # config.eager_load_paths << Rails.root.join("extras")
     config.generators do |g|
       g.test_framework :rspec,
-        fixtures:         false,
-        view_specs:       false,
-        helper_specs:     false,
-        routing_specs:    false,
-        request_specs:    false,
-        controller_specs: false
+                       fixtures: false,
+                       view_specs: false,
+                       helper_specs: false,
+                       routing_specs: false,
+                       request_specs: false,
+                       controller_specs: false
     end
   end
 end

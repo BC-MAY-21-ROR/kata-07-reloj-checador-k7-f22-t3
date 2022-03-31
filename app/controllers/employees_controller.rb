@@ -7,11 +7,11 @@ class EmployeesController < ApplicationController
   # GET /employees or /employees.json
   def index
     @search = params[:search]
-    if @search
-      @employees = Employee.where("name LIKE ?", "%" + @search + "%")
-    else
-      @employees = Employee.order(:name)
-    end
+    @employees = if @search
+                   Employee.where('name LIKE ?', "%#{@search}%")
+                 else
+                   Employee.order(:name)
+                 end
   end
 
   # GET /employees/1 or /employees/1.json
@@ -31,7 +31,7 @@ class EmployeesController < ApplicationController
 
     respond_to do |format|
       if @employee.save
-        format.html { redirect_to employee_url(@employee), notice: 'Employee was successfully created.' }
+        format.html { redirect_to employee_url(@employee), notice: t('.created') }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -42,7 +42,7 @@ class EmployeesController < ApplicationController
   def update
     respond_to do |format|
       if @employee.update(employee_params)
-        format.html { redirect_to employee_url(@employee), notice: 'Employee was successfully updated.' }
+        format.html { redirect_to employee_url(@employee), notice: t('.updated') }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -52,10 +52,10 @@ class EmployeesController < ApplicationController
   # DELETE /employees/1 or /employees/1.json
   def destroy
     status = !@employee.is_active
-    @employee.update_column(:is_active,status)
+    @employee.update_column(:is_active, status)
 
     respond_to do |format|
-      format.html { redirect_to employees_url, notice: 'Employee was successfully unactived.' }
+      format.html { redirect_to employees_url, notice: t('.active_changed') }
     end
   end
 
