@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Migration to create table attendances
 class CreateAttendances < ActiveRecord::Migration[7.0]
   def change
     create_table :attendances do |t|
