@@ -27,7 +27,7 @@ class CompanyBranchesController < ApplicationController
     respond_to do |format|
       if @company_branch.save
         format.html do
-          redirect_to company_branch_url(@company_branch), notice: 'CompanyBranch was successfully created.'
+          redirect_to company_branch_url(@company_branch), notice: t('.created')
         end
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,7 +40,7 @@ class CompanyBranchesController < ApplicationController
     respond_to do |format|
       if @company_branch.update(company_branch_params)
         format.html do
-          redirect_to company_branch_url(@company_branch), notice: 'company_branch was successfully updated.'
+          redirect_to company_branch_url(@company_branch), notice: t('.updated')
         end
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,7 +53,7 @@ class CompanyBranchesController < ApplicationController
     @company_branch.destroy
 
     respond_to do |format|
-      format.html { redirect_to company_branches_url, notice: 'company_branch was successfully destroyed.' }
+      format.html { redirect_to company_branches_url, notice: t('.destroyed') }
     end
   end
 

@@ -11,5 +11,5 @@
 # frozen_string_literal: true
 
 class CompanyBranch < ApplicationRecord
-  has_many :employees
+  has_many :employees, dependent: :destroy
 end

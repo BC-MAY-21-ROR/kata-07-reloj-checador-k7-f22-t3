@@ -23,12 +23,12 @@ class AttendancesController < ApplicationController
   # POST /attendances or /attendances.json
   def create
     @employee = Employee.where(private_number: attendance_params[:employee_private_number]).first
-    return redirect_to new_attendance_url, alert: 'Verify your private number' if @employee.nil?
+    return redirect_to new_attendance_url, alert: t('.bad_private_number') if @employee.nil?
 
     @attendance = Attendance.where(employee_id: @employee.id).where('check_in BETWEEN ? AND ?',
                                                                     DateTime.now.beginning_of_day, DateTime.now.end_of_day).last
     if @attendance
-      return redirect_to new_attendance_url, alert: 'You have already check out today' if @attendance.check_out
+      return redirect_to new_attendance_url, alert: t('.already_checked') if @attendance.check_out
 
       @attendance.update_attribute(:check_out, DateTime.now)
     else
@@ -36,14 +36,14 @@ class AttendancesController < ApplicationController
       @attendance.save
     end
 
-    redirect_to new_attendance_url, notice: 'Attendance was successfully created.'
+    redirect_to new_attendance_url, notice: t('.success')
   end
 
   # PATCH/PUT /attendances/1 or /attendances/1.json
   def update
     respond_to do |format|
       if @attendance.update(attendance_params)
-        format.html { redirect_to attendance_url(@attendance), notice: 'Attendance was successfully updated.' }
+        format.html { redirect_to attendance_url(@attendance), notice: t('.updated') }
         format.json { render :show, status: :ok, location: @attendance }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -57,7 +57,7 @@ class AttendancesController < ApplicationController
     @attendance.destroy
 
     respond_to do |format|
-      format.html { redirect_to attendances_url, notice: 'Attendance was successfully destroyed.' }
+      format.html { redirect_to attendances_url, notice: t('.destroyed') }
       format.json { head :no_content }
     end
   end
