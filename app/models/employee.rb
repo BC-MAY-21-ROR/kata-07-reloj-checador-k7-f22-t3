@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: employees
@@ -15,19 +17,20 @@
 #
 class Employee < ApplicationRecord
   belongs_to :company_branch
-  has_many :attendances
+  has_many :attendances, dependent: :destroy
 
   scope :actives, -> { where(is_active: true) }
 
   def absence_by_month
-    attendances.where.not(check_in: nil).where('check_in BETWEEN ? AND ?', DateTime.now.beginning_of_month, DateTime.now.end_of_month).count
+    attendances.where.not(check_in: nil).where('check_in BETWEEN ? AND ?', DateTime.now.beginning_of_month,
+                                               DateTime.now.end_of_month).count
   end
 
   def today_attendance?
-    attendances.where(check_in: Date.today.all_day).first.nil? ? false : true
+    !attendances.where(check_in: Date.today.all_day).first.nil?
   end
-  
-  validates :name, :email, :position, :employee_number, :private_number, :company_branch_id, presence: true
+
+  validates :name, :email, :position, :employee_number, :private_number, presence: true
   validates :email, uniqueness: true
   validates :private_number, uniqueness: true
   validates :employee_number, uniqueness: true
