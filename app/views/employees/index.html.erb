@@ -1,4 +1,20 @@
 <h1>Employees</h1>
+
+  
+      <%= form_tag(employees_path, method: :get, class: "row g-3") do %>
+        <div class="col-auto">
+          <label for="search" class="form-label">Search by Employee name</label>
+        </div>
+        <div class="col-auto">
+          <%= text_field_tag :search, @search, class: "form-control" %>
+        </div>
+        <div class="col-auto">
+          <%= submit_tag 'Search', class: "btn btn-success" %>
+        </div>
+      <% end %>
+
+<hr />
+
 <div id="employees">
   <%= link_to "New employee", new_employee_path, class: "btn btn-success" %>
   <table class="table table-striped mt-5 table-dark">
@@ -9,7 +25,7 @@
       <th>Employee#</th>
       <th>Private Number</th>
       <th>Company Branch</th>
-      <th></th>
+      <th colspan="3">Options</th>
     </tr>
     <% @employees.each do |employee| %>
       <tr>
@@ -19,7 +35,15 @@
         <td><%= employee.employee_number %></td>
         <td><%= employee.private_number %></td>
         <td><%= employee.company_branch.name %></td>
-        <td><%= link_to "Show", employee, class: 'btn btn-primary' %></td>
+        <td><% link_to "Show", employee, class: 'btn btn-primary' %></td>
+        <td><%= link_to '<i class="fas fa-pen fa-lg"></i> Edit'.html_safe, edit_employee_path(employee), class: "btn btn-primary mb-2 "%></td>
+        <td>
+          <% if employee.is_active %>
+            <%= button_to '<i class="far fa-flushed fa-lg"></i> Deactive'.html_safe, employee, method: :delete, class: "btn btn-danger" %>
+          <% else %>
+            <%= button_to '<i class="far fa-flushed fa-lg"></i> Active'.html_safe, employee, method: :delete, class: "btn btn-success" %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </table>
