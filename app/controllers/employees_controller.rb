@@ -3,7 +3,12 @@ class EmployeesController < ApplicationController
 
   # GET /employees or /employees.json
   def index
-    @employees = Employee.all
+    @search = params[:search]
+    if @search
+      @employees = Employee.where("name LIKE ?", "%" + @search + "%")
+    else
+      @employees = Employee.order(:name)
+    end
   end
 
   # GET /employees/1 or /employees/1.json
@@ -45,10 +50,11 @@ class EmployeesController < ApplicationController
 
   # DELETE /employees/1 or /employees/1.json
   def destroy
-    @employee.destroy
+    status = !@employee.is_active
+    @employee.update_column(:is_active,status)
 
     respond_to do |format|
-      format.html { redirect_to employees_url, notice: 'Employee was successfully destroyed.' }
+      format.html { redirect_to employees_url, notice: 'Employee was successfully unactived.' }
     end
   end
 
