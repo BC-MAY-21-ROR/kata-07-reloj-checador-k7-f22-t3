@@ -1,11 +1,14 @@
-require_relative "boot"
-require "rails/all"
+# frozen_string_literal: true
+
+require_relative 'boot'
+require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
 module Kata07RelojChecadorK7F22T3
+  # Main base class
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0

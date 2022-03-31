@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Controller for branches
 class CompanyBranchesController < ApplicationController
   before_action :set_company_branch, only: %i[show edit update destroy]
 
@@ -7,8 +10,7 @@ class CompanyBranchesController < ApplicationController
   end
 
   # GET /company_branches/1 or /company_branches/1.json
-  def show
-  end
+  def show; end
 
   # GET /company_branches/new
   def new
@@ -16,8 +18,7 @@ class CompanyBranchesController < ApplicationController
   end
 
   # GET /company_branches/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /company_branches or /company_branches.json
   def create
@@ -25,7 +26,9 @@ class CompanyBranchesController < ApplicationController
 
     respond_to do |format|
       if @company_branch.save
-        format.html { redirect_to company_branch_url(@company_branch), notice: 'CompanyBranch was successfully created.' }
+        format.html do
+          redirect_to company_branch_url(@company_branch), notice: 'CompanyBranch was successfully created.'
+        end
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -36,7 +39,9 @@ class CompanyBranchesController < ApplicationController
   def update
     respond_to do |format|
       if @company_branch.update(company_branch_params)
-        format.html { redirect_to company_branch_url(@company_branch), notice: 'company_branch was successfully updated.' }
+        format.html do
+          redirect_to company_branch_url(@company_branch), notice: 'company_branch was successfully updated.'
+        end
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -53,13 +58,14 @@ class CompanyBranchesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_company_branch
-      @company_branch = CompanyBranch.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def company_branch_params
-      params.require(:company_branch).permit(:name, :address)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_company_branch
+    @company_branch = CompanyBranch.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def company_branch_params
+    params.require(:company_branch).permit(:name, :address)
+  end
 end

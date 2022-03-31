@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Migration to create table employees
 class CreateEmployees < ActiveRecord::Migration[7.0]
   def change
     create_table :employees do |t|
