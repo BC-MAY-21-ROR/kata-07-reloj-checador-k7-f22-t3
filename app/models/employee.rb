@@ -26,6 +26,14 @@ class Employee < ApplicationRecord
 
   scope :actives, -> { where(is_active: true) }
 
+  def self.search(search_name)
+    if search_name
+      self.where('name LIKE ?', "%#{search_name}%")
+    else
+      self.order(:name)
+    end
+  end
+
   def absence_by_month
     DateTime.now.day - attendances.where(
       'check_in BETWEEN ? AND ?',
