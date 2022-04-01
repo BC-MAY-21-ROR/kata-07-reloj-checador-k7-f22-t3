@@ -27,6 +27,6 @@ end
 
 50.times do |d|
   employee_id = rand(Employee.first.id..Employee.last.id)
-  Attendance.create(employee_id:, check_in: Time.zone.now.midnight - d.day + rand(5..8).hours,
+  Attendance.create(employee_id: employee_id, check_in: Time.zone.now.midnight - d.day + rand(5..8).hours,
                     check_out: Time.zone.now.midnight - d.day + rand(13..16).hours)
 end
