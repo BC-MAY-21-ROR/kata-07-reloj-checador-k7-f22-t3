@@ -2,7 +2,7 @@
 
 # Controller for attendances
 class AttendancesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:new, :create]
+  skip_before_action :authenticate_user!, only: %i[new create]
 
   # GET /attendances or /attendances.json
   def index

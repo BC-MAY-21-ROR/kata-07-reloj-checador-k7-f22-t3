@@ -4,6 +4,9 @@
     <%= render "form", attendance: @attendance %>
     <br>
     <h1 id="clock"></h1>
+      <% if !user_signed_in? %>
+        <%= link_to 'Admin Sign in', employees_path, class: "btn btn-primary login_button" %>
+      <% end %>
   </div>
 </div>
 <script>

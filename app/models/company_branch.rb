@@ -12,4 +12,7 @@
 
 class CompanyBranch < ApplicationRecord
   has_many :employees, dependent: :destroy
+
+  validates :name, :address, presence: true
+  validates :name, uniqueness: true
 end

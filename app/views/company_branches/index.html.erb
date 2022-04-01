@@ -5,13 +5,18 @@
     <tr>
       <th>Name</th>
       <th>Address</th>
-      <th></th>
+      <th colspan="2"></th>
     </tr>
     <% @company_branches.each do |company_branch| %>
       <tr>
         <td><%= company_branch.name %></td>
         <td><%= company_branch.address %></td>
-        <td><%= link_to "Show", company_branch, class: 'btn btn-primary' %></td>
+        <td>
+        <%= link_to "Edit", edit_company_branch_path(company_branch), class: "btn btn-primary" %>
+        </td>
+        <td>
+        <%= button_to "Destroy", @company_branch, method: :delete, class: "btn btn-danger" %>
+        </td>
       </tr>
     <% end %>
   </table>
