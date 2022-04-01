@@ -39,7 +39,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_31_210643) do
     t.bigint "company_branch_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "is_active"
+    t.boolean "is_active", default: true
     t.index ["company_branch_id"], name: "index_employees_on_company_branch_id"
     t.index ["email"], name: "index_employees_on_email", unique: true
     t.index ["employee_number"], name: "index_employees_on_employee_number", unique: true
