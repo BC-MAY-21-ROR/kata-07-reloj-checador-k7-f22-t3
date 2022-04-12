@@ -1,10 +1,8 @@
-<h1>Editing company_branch</h1>
+<h1>Editing Company Branch</h1>
 
 <%= render "form", company_branch: @company_branch %>
 
 <br>
 
-<div>
-  <%= link_to "Show this company_branch", @company_branch %> |
-  <%= link_to "Back to company_branches", company_branches_path %>
-</div>
+<%= link_to "Back", company_branches_path, class: "btn btn-primary" %>
+

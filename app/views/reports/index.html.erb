@@ -3,12 +3,14 @@
   <tr>
     <th>Employee name</th>
     <th class="text-center">Today attendance</th>
-    <th class="text-center">Absence by month</th>
+    <th class="text-center">Average time in <%= Date.today.strftime("%B") %></th>
+    <th class="text-center">Absences in <%= Date.today.strftime("%B") %></th>
   </tr>
   <% @employees.each do |employee| %>
     <tr>
       <td><%= employee[:name] %></td>
       <td class="text-center"><%= today_to_check(employee.today_attendance?) %></td>
+      <td class="text-center"><%= employee.average %>
       <td class="text-center"><%= employee.absence_by_month %>
     </tr>
   <% end %>

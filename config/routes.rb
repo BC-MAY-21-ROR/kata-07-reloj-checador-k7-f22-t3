@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+
   resources :attendances
   resources :company_branches
   resources :employees
@@ -11,6 +12,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-  # root "articles#index"
-  root 'employees#index'
+  root "attendances#new"
 end
+
+
